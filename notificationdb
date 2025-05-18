@@ -1,0 +1,5 @@
+psql -U postgres
+
+postgres=# CREATE DATABASE notificationdb;
+postgres=# CREATE USER <username> WITH PASSWORD '<password>';
+postgres=# GRANT ALL PRIVILEGES ON DATABASE notificationdb TO <username>;

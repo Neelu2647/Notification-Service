@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Notification System{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-100">
+    <!-- Navbar -->
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">Notification Demo</h1>
+        <div class="relative">
+            <!-- Bell Icon -->
+            <button id="bellButton" class="focus:outline-none">
+                🔔
+            </button>
+            <!-- Notification Dropdown -->
+            <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg z-20">
+                <div class="p-4 border-b font-semibold">Notifications</div>
+                <div id="notificationsContainer" class="max-h-60 overflow-y-auto">
+                    <!-- Notifications will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-8 text-center">
+        <h2 class="text-2xl font-bold mb-2">Welcome to the Notification System</h2>
+        <p class="text-gray-600">Try sending a notification to see it appear in the bell above!</p>
+    </main>
+</div>
+
+<script>
+    const bellButton = document.getElementById('bellButton');
+    const dropdown = document.getElementById('notificationDropdown');
+    const container = document.getElementById('notificationsContainer');
+
+    // Toggle dropdown
+    bellButton.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden');
+    });
+
+    // Render a notification
+    function renderNotification(notif) {
+        const div = document.createElement("div");
+        div.className = "p-4 border-b hover:bg-gray-100";
+        div.innerHTML = `
+            <div class="text-sm font-medium">${notif.message}</div>
+            <div class="text-xs text-gray-500">${new Date(notif.created_at).toDateString()}</div>
+        `;
+        return div;
+    }
+
+    // Load initial notifications
+    fetch("/notifications")
+        .then(res => res.json())
+        .then(data => {
+            data.reverse().forEach(notif => {
+                container.appendChild(renderNotification(notif));
+            });
+        });
+
+    // WebSocket setup
+    const ws = new WebSocket("ws://127.0.0.1:8000/ws");
+    ws.onmessage = (event) => {
+        const payload = JSON.parse(event.data);
+        if (payload.action === "new_notification") {
+            const notif = payload.data;
+            container.prepend(renderNotification(notif));
+        }
+    };
+</script>
+{% endblock %}
