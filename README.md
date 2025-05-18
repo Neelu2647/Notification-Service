@@ -44,16 +44,16 @@ source venv/bin/activate `
 ### Database Setup
 Start PostgreSQL service and create a database named notificationdb:
 
-`psql -U postgres
+`psql -U postgres`
 
-postgres=# CREATE DATABASE notificationdb;
-CREATE DATABASE
+`postgres=# CREATE DATABASE notificationdb;`
+`CREATE DATABASE`
 
-postgres=# CREATE USER <username> WITH PASSWORD '<password>';
-CREATE ROLE
+`postgres=# CREATE USER <username> WITH PASSWORD '<password>';`
+`CREATE ROLE`
 
-postgres=# GRANT ALL PRIVILEGES ON DATABASE notificationdb TO <username>;
-GRANT`
+`postgres=# GRANT ALL PRIVILEGES ON DATABASE notificationdb TO <username>;`
+`GRANT`
 
 ### Environment Variables
 Create a .env file in the project root with the following:
