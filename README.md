@@ -66,12 +66,12 @@ Create a .env file in the project root with the following:
 By default, it will run on: `http://127.0.0.1:8000`
 
 ### Usage
-# 🌐 Web Interface
+### 🌐 Web Interface
 
 Navigate to http://127.0.0.1:8000 to view the frontend.
 Click on the bell icon to see live notifications.
 
-# 🔄 WebSocket Connection
+### 🔄 WebSocket Connection
 A WebSocket connection is established at:
 
 ws://127.0.0.1:8000/ws
@@ -81,7 +81,7 @@ New notifications will appear live without a page refresh.
 ### ➕ Create Notification
 ### POST /notifications
 
-## Body:
+### Body:
 `{
   "user_id": 1,
   "message": "Your order has been shipped!"
@@ -92,7 +92,7 @@ New notifications will appear live without a page refresh.
 
 Returns a list of all notifications.
 
-# 📥 Get Notifications by User ID
+### 📥 Get Notifications by User ID
 GET /users/{user_id}/notifications
 
 Replace {user_id} with the actual user ID.
