@@ -31,38 +31,39 @@ A real-time in-app notification system built using FastAPI and WebSockets. Notif
 
 ### 1️. Clone the Project
 
-git clone https://github.com/Neelu2647/Notification-Service
-
-cd Notification-Service
+`git clone https://github.com/Neelu2647/Notification-Service
+cd Notification-Service`
 
 ### 2️. Create a Virtual Environment
-python -m venv venv
-source venv/bin/activate 
+`python -m venv venv
+source venv/bin/activate `
 
 ### 3️. Install Dependencies
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ### Database Setup
 Start PostgreSQL service and create a database named notificationdb:
 
-sql
-psql -U postgres
+`psql -U postgres
 
 postgres=# CREATE DATABASE notificationdb;
+CREATE DATABASE
+
 postgres=# CREATE USER <username> WITH PASSWORD '<password>';
+CREATE ROLE
+
 postgres=# GRANT ALL PRIVILEGES ON DATABASE notificationdb TO <username>;
+GRANT`
 
 ### Environment Variables
 Create a .env file in the project root with the following:
 
-env
-
-DATABASE_URL = "postgresql+asyncpg://neondb_owner:<username>/neondb?ssl=require"
+`DATABASE_URL = "postgresql+asyncpg://neondb_owner:<username>/neondb?ssl=require"`
 
 ### Run Locally
 
-uvicorn app.main:app --reload
-By default, it will run on: http://127.0.0.1:8000
+`uvicorn app.main:app --reload`
+By default, it will run on: `http://127.0.0.1:8000`
 
 ### Usage
 # 🌐 Web Interface
@@ -80,11 +81,12 @@ New notifications will appear live without a page refresh.
 # ➕ Create Notification
 # POST /notifications
 
-Body:
-{
+## Body:
+`{
   "user_id": 1,
   "message": "Your order has been shipped!"
-}
+}`
+
 # 📥 Get All Notifications
 # GET /notifications
 
