@@ -32,6 +32,7 @@ A real-time in-app notification system built using FastAPI and WebSockets. Notif
 ### 1️. Clone the Project
 
 git clone https://github.com/Neelu2647/Notification-Service
+
 cd Notification-Service
 
 ### 2️. Create a Virtual Environment
