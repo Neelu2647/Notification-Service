@@ -77,9 +77,9 @@ A WebSocket connection is established at:
 ws://127.0.0.1:8000/ws
 New notifications will appear live without a page refresh.
 
-###   API Endpoints
-# ➕ Create Notification
-# POST /notifications
+##   API Endpoints
+### ➕ Create Notification
+### POST /notifications
 
 ## Body:
 `{
@@ -87,8 +87,8 @@ New notifications will appear live without a page refresh.
   "message": "Your order has been shipped!"
 }`
 
-# 📥 Get All Notifications
-# GET /notifications
+### 📥 Get All Notifications
+#### GET /notifications
 
 Returns a list of all notifications.
 
